@@ -1,6 +1,7 @@
 import AddUserForm from "@/components/AddUserForm";
 import UserCard from "@/components/UserCard";
 const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
+console.log(`${NEXT_PUBLIC_API_URL}/users`)
 const getUsers = async () => {
     try {
       const res = await fetch(`${NEXT_PUBLIC_API_URL}/users`, {
@@ -23,6 +24,7 @@ const getUsers = async () => {
   
 const UsersPage = async() => {
     const { users } = await getUsers();
+    console.log(users)
     return (
       <>
         <AddUserForm />
