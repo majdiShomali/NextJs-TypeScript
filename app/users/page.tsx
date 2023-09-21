@@ -25,7 +25,7 @@ const UsersPage = async() => {
     // const { users } = await getUsers();
     return (
       <>
-        {/* <AddUserForm /> */}
+        <AddUserForm />
         <div className="flex flex-wrap justify-center gap-5 my-5">
           {/* <UserCard users={users} /> */}
         </div>
