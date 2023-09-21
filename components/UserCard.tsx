@@ -3,6 +3,8 @@
 import EditUserForm from "./EditUserForm";
 import Icon from "@mdi/react";
 import { mdiDelete } from "@mdi/js";
+import Link from "next/link";
+
 const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 interface UserCardProps {
@@ -37,6 +39,10 @@ const UserCard: React.FC<UserCardProps> = ({ users }) => {
             <div onClick={() => handleDelete(user._id)}>
               <Icon path={mdiDelete} color={"red"} size={1.5} />
             </div>
+
+            <Link passHref aria-label={`/users/userDetails/${user._id}`} href={`/users/userDetails/${user._id}`}>
+              Show Details
+            </Link>
 
             <p>{user.userName}</p>
             <p> {user._id}</p>

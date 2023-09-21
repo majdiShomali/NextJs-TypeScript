@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import connectMongoDB from "@/libs/mongodb";
 import User from "@/models/user";
+import bcrypt from 'bcrypt'
 
 export async function DELETE(request:Request) {
     try {
@@ -18,9 +19,20 @@ export async function DELETE(request:Request) {
 
 export async function POST(request: Request) {
     try {
-        const { userName } = await request.json();
+        
+        
+        const { userName,userEmail,userPassword  } = await request.json();
+
+        const user = await User.findOne({userEmail:userEmail});
+        if(user){
+          return NextResponse.json({ message: "user aleredy exist" }, { status: 409 });
+        }
+        
+        const hashPassword = await bcrypt.hash(userPassword, 5);
+
+        console.log(userName,userEmail,userPassword);
         await connectMongoDB();
-        await User.create({ userName });
+        await User.create({ userName,userEmail,userPassword:hashPassword ,role:"user" });
         return NextResponse.json({ message: "User Created" }, { status: 201 });
 
     } catch (error) {
