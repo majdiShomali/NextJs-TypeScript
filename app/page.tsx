@@ -6,33 +6,35 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const { push } = useRouter();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
 
-    const payload = {
-      userEmail: event.currentTarget.userEmail.value,
-      userPassword: event.currentTarget.userPassword.value,
-    };
+  //   const payload = {
+  //     userEmail: event.currentTarget.userEmail.value,
+  //     userPassword: event.currentTarget.userPassword.value,
+  //   };
 
-    try {
-      const { data } = await axios.post("/api/auth/login", payload);
+  //   try {
+  //     const { data } = await axios.post("/api/auth/login", payload);
 
-      alert(JSON.stringify(data));
+  //     alert(JSON.stringify(data));
 
-      // redirect the user to /dashboard
-      push("/dashboard");
-    } catch (e) {
-      const error = e as AxiosError;
+  //     // redirect the user to /dashboard
+  //     push("/dashboard");
+  //   } catch (e) {
+  //     const error = e as AxiosError;
 
-      alert(error.message);
-    }
-  };
+  //     alert(error.message);
+  //   }
+  // };
 
   return (
     <main>
       <h1>Nextjs authentication JWT verify http cookie only</h1>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form 
+      // onSubmit={handleSubmit} 
+      className="flex flex-col gap-4">
         <div>
           <label htmlFor="userEmail">userEmail:</label>
           <input
