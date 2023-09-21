@@ -18,20 +18,20 @@ export default function DashboardLayout({
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const { push } = useRouter();
 
-  useEffect(() => {
-    (async () => {
-      const { user, error } = await getUser();
-      console.log(user)
+  // useEffect(() => {
+  //   (async () => {
+  //     const { user, error } = await getUser();
+  //     console.log(user)
 
-      if (error) {
-        push("/");
-        return;
-      }
-      console.log(user)
-      // if the error did not happen, if everything is alright
-      setIsSuccess(true);
-    })();
-  }, [push]);
+  //     if (error) {
+  //       push("/");
+  //       return;
+  //     }
+  //     console.log(user)
+  //     // if the error did not happen, if everything is alright
+  //     setIsSuccess(true);
+  //   })();
+  // }, [push]);
 
   if (!isSuccess) {
     return <p>Loading...</p>;
@@ -52,20 +52,20 @@ export default function DashboardLayout({
   );
 }
 
-async function getUser(): Promise<UserResponse> {
-  try {
-    const { data } = await axios.get("/api/auth/me");
-      console.log(data)
-    return {
-      user: data,
-      error: null,
-    };
-  } catch (e) {
-    const error = e as AxiosError;
+// async function getUser(): Promise<UserResponse> {
+//   try {
+//     const { data } = await axios.get("/api/auth/me");
+//       console.log(data)
+//     return {
+//       user: data,
+//       error: null,
+//     };
+//   } catch (e) {
+//     const error = e as AxiosError;
 
-    return {
-      user: null,
-      error,
-    };
-  }
-}
+//     return {
+//       user: null,
+//       error,
+//     };
+//   }
+// }
