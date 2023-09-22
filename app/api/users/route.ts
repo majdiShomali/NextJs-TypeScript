@@ -43,14 +43,14 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request,response:Response) {
     try {
-        const queryParams = new URL(request.url).searchParams;
-        const numParam = queryParams.get('num'); 
-        const typeParam = queryParams.get('type'); 
+        // const queryParams = new URL(request.url).searchParams;
+        // const numParam = queryParams.get('num'); 
+        // const typeParam = queryParams.get('type'); 
 
         await connectMongoDB();
         const users = await User.find();
 
-        return NextResponse.json({ users, numParam ,typeParam}, { status: 200 });
+        return NextResponse.json({ users}, { status: 200 });
 
     } catch (error) {
         return NextResponse.json({ message: error }, { status: 500 });
