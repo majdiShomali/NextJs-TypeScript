@@ -42,13 +42,19 @@ export async function POST(request: Request) {
   }
 
 export async function GET(request: Request,response:Response) {
+    console.log("+++++++++++++++++++++++++")
     try {
+        console.log("+++++++++++try++++++++++++++")
+
         await connectMongoDB();
+        console.log("+++++++++++mongo++++++++++++++")
+
         // const queryParams = new URL(request.url).searchParams;
         // const numParam = queryParams.get('num'); 
         // const typeParam = queryParams.get('type'); 
 
         const users = await User.find();
+        console.log("+++++++++++find++++++++++++++")
 
         return NextResponse.json({ users}, { status: 200 });
 
