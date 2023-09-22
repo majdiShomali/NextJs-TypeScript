@@ -53,10 +53,10 @@ export async function GET(request: Request,response:Response) {
         // const numParam = queryParams.get('num'); 
         // const typeParam = queryParams.get('type'); 
 
-        const users = await User.find();
+        // const users = await User.find();
         console.log("+++++++++++find++++++++++++++")
 
-        return NextResponse.json({ users}, { status: 200 });
+        return NextResponse.json({ users:{_id:"1111",userName:"aaaaaa"}}, { status: 200 });
 
     } catch (error) {
         return NextResponse.json({ message: error }, { status: 500 });
