@@ -1,13 +1,8 @@
 "use client"
 import React, { createContext, useState, useEffect } from "react";
 import axios, { AxiosError } from "axios";
+import { UserType } from "@/types/userData";
 
-
-// Define the type for the user object
-type UserType = {
-    UserEmail:string
-    role:string
-};
 
 // Create a context for the user
 export const UserContext = createContext<any | undefined>(undefined);

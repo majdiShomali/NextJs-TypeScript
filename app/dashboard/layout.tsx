@@ -30,9 +30,9 @@ export default function DashboardLayout({
   //   })();
   // }, [push]);
 
-  if (!isSuccess) {
-    return <p>Loading...</p>;
-  }
+  // if (!isSuccess) {
+  //   return <p>Loading...</p>;
+  // }
 
   return (
     <main>

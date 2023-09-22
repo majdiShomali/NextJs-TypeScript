@@ -3,6 +3,10 @@ import axios, { AxiosError } from "axios";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import {
+  Button,
+} from "@material-tailwind/react";
+const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 interface UserResponse {
     user: string | null;
@@ -12,6 +16,8 @@ async function getUser(): Promise<UserResponse> {
     try {
       const { data } = await axios.get("/api/auth/logout");
         console.log(data)
+        window.location.href = `${NEXT_PUBLIC_API_URL}/`;
+
       return {
         user: data,
         error: null,
@@ -27,7 +33,14 @@ async function getUser(): Promise<UserResponse> {
   }
 const LogOutButton = () => {
   return (
-    <button className="bg-red-500" onClick={getUser}>Log Out</button>
+    <Button
+    onClick={getUser}
+    variant="gradient"
+    size="sm"
+    className="hidden lg:inline-block"
+  >
+    <span>Log Out</span>
+  </Button>
   )
 }
 

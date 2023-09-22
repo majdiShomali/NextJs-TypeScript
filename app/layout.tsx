@@ -19,13 +19,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
           <UserProvider>
-
-          <StickyNavbar/>
+        <Providers>
+           <>
+           <StickyNavbar/>
           {children}
-          </UserProvider>
+           </>
+
         </Providers>
+          </UserProvider>
         
         </body>
     </html>

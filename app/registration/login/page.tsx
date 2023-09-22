@@ -1,6 +1,7 @@
 "use client";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
+const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function LogInPage() {
   const { push } = useRouter();
@@ -20,11 +21,11 @@ export default function LogInPage() {
    
       // redirect the user to /dashboard
       if(data.role ==="admin"){
-      push("/dashboard");
-
+      // push("/dashboard");
+      window.location.href = `${NEXT_PUBLIC_API_URL}/dashboard`;
       }else{
         push("/");
-
+        window.location.href = `${NEXT_PUBLIC_API_URL}/`;
       }
     } catch (e) {
       const error = e as AxiosError;

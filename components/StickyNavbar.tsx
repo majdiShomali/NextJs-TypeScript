@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Navbar,
   Collapse,
@@ -10,8 +10,15 @@ import {
 } from "@material-tailwind/react";
 import Link from "next/link";
 
+
+import { useContext } from "react";
+import { UserContext } from "@/context/userContext/userContext";
+import { UserType } from "@/types/userData";
+import LogOutButton from "./LogOutButton";
 export function StickyNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
+  const { user }:any = useContext<UserType | undefined>(UserContext);
+  console.log(useContext<UserType | undefined>(UserContext));
 
   React.useEffect(() => {
     window.addEventListener(
@@ -76,7 +83,17 @@ export function StickyNavbar() {
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
 
-          <Link onClick={()=>setOpenNav(false)} aria-label={`Docs`} href="/registration/login" className="flex items-center">
+
+          {user? 
+<>
+
+<LogOutButton/>
+</>
+: 
+
+<>
+
+<Link onClick={()=>setOpenNav(false)} aria-label={`Docs`} href="/registration/login" className="flex items-center">
           <Button
             variant="gradient"
             size="sm"
@@ -86,6 +103,8 @@ export function StickyNavbar() {
           </Button>
           </Link>
 
+</>
+                 }       
 
           <IconButton
             variant="text"
@@ -129,12 +148,29 @@ export function StickyNavbar() {
       </div>
       <Collapse open={openNav}>
         {navList}
-        <Link aria-label={`Docs`} href="/registration/login" className="flex items-center">
 
+{user? 
+<>
+
+<LogOutButton/>
+</>
+
+
+:
+<>
+
+<Link aria-label={`Docs`} href="/registration/login" className="flex items-center">
         <Button onClick={()=>setOpenNav(false)} variant="gradient" size="sm" fullWidth className="mb-2">
           <span>Log In</span>
         </Button>
         </Link>
+</>
+
+
+}
+
+
+
       </Collapse>
     </Navbar>
   );
