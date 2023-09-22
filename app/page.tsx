@@ -2,6 +2,7 @@
 
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
+import {useEffect} from "react"
 const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 console.log(`${NEXT_PUBLIC_API_URL}/api/users`)
@@ -32,7 +33,19 @@ export default function Home() {
   };
 
 
+useEffect(()=>{
+  const getGet = async()=>{
+    try {
+      const response = await axios.get(`${NEXT_PUBLIC_API_URL}/api/users`);
+console.log(response)
+    } catch (error) {
+      console.log(error)
 
+    }
+
+  }
+  getGet()
+},[])
   
 
   return (
