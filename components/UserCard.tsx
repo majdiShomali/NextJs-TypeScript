@@ -25,7 +25,7 @@ const UserCard: React.FC<UserCardProps> = ({ users }) => {
         });
   
         if (res.ok) {
-          console.log(res)
+          console.log(await res.json())
         }
       } catch (error) {
         console.log(error)

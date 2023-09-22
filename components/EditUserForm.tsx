@@ -56,6 +56,7 @@ const EditUserForm: React.FC<UserCardProps> = ({ user }) => {
      if (!res.ok) {
        throw new Error("Failed to update user");
      }
+     console.log(await res.json())
      handleClose();
    } catch (error) {
      console.log(error);

@@ -25,7 +25,7 @@ const AddUserForm =  () => {
 
         // router.push("/");
         //   const user = await res.json()
-        //   console.log(user);
+          console.log(await res.json());
       } else {
         const {message} =await res.json()
         setErrorMessage(message);
