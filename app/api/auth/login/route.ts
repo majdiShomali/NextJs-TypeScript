@@ -51,6 +51,7 @@ try {
 
   const response = {
     message: "Authenticated!",
+    role:user.role
   };
 
   return new Response(JSON.stringify(response), {
