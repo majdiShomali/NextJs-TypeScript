@@ -2,6 +2,9 @@
 
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
+const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+console.log(`${NEXT_PUBLIC_API_URL}/api/users`)
 
 export default function Home() {
   const { push } = useRouter();
