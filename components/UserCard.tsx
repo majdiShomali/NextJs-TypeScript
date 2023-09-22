@@ -19,12 +19,18 @@ const UserCard: React.FC<UserCardProps> = ({ users }) => {
     const confirmed = confirm("Are you sure?");
 
     if (confirmed) {
-      const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/users?userId=${userId}`, {
-        method: "DELETE",
-      });
-
-      if (res.ok) {
+      try {
+        const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/users?userId=${userId}`, {
+          method: "DELETE",
+        });
+  
+        if (res.ok) {
+          console.log(res)
+        }
+      } catch (error) {
+        console.log(error)
       }
+   
     }
   };
   return (
