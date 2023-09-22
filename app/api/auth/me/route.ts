@@ -32,9 +32,21 @@ export async function GET() {
    const response = {
     user: decodedToken.role ,
   };
+  if(decodedToken.role ==="admin"){
     return new Response(JSON.stringify(response), {
       status: 200,
     });
+  }else{
+    return NextResponse.json(
+      {
+        message: "Unauthorized",
+      },
+      {
+        status: 401,
+      }
+    );
+  }
+
   } catch (e) {
     return NextResponse.json(
       {

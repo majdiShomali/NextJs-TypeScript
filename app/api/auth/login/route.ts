@@ -4,6 +4,7 @@ import { sign } from "jsonwebtoken";
 import { NextResponse } from "next/server";
 import User from "@/models/user";
 import bcrypt from 'bcrypt'
+import connectMongoDB from "@/libs/mongodb";
 
 const MAX_AGE = 60 * 60 * 24 * 30; // days;
 
@@ -11,8 +12,10 @@ export async function POST(request: Request) {
   const body = await request.json();
 
   const { userEmail, userPassword } = body;
-       
+       console.log( userEmail, userPassword)
 try {
+  await connectMongoDB();
+
   const user = await User.findOne({userEmail:userEmail});
   console.log(user);
   if(!user){
@@ -56,6 +59,8 @@ try {
   });
   
 } catch (error) {
+  console.log(error);
+
   return NextResponse.json({ message: error }, { status: 500 });
 }
 

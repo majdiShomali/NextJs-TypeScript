@@ -1,11 +1,6 @@
 "use client";
-
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
-import {useEffect} from "react"
-const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-console.log(`${NEXT_PUBLIC_API_URL}/api/users`)
 
 export default function Home() {
   const { push } = useRouter();
@@ -32,29 +27,6 @@ export default function Home() {
     }
   };
 
-
-useEffect(()=>{
-  const getGet = async()=>{
-    try {
-
-const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/users`, {
-  next: {
-    revalidate: 20, //ISR===== ssr with sec
-  },
-});
-
-console.log(await res.json())
-
-
-    } catch (error) {
-      console.log(error)
-
-    }
-
-  }
-  getGet()
-},[])
-  
 
   return (
     <main>
