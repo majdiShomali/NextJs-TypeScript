@@ -6,10 +6,10 @@ const getUsers = async () => {
     try {
       const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/users`, {
         // cache:"force-cache",//SSG getStaticSideProps
-        cache: "no-store", //SSR getServerSideProps
-        // next: {
-        //   revalidate: 20, //ISR===== ssr with sec
-        // },
+        // cache: "no-store", //SSR getServerSideProps
+        next: {
+          revalidate: 20, //ISR===== ssr with sec
+        },
       });
   
       if (!res.ok) {
