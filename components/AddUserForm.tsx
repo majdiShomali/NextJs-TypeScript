@@ -13,7 +13,7 @@ const AddUserForm =  () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${NEXT_PUBLIC_API_URL}/users`, {
+      const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/users`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",

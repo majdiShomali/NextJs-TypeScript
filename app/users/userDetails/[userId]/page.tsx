@@ -3,7 +3,7 @@ import UserCard from '@/components/UserCard'
 const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // async function getUser(userId:string){
-//   const topicResponce =await fetch(`${NEXT_PUBLIC_API_URL}/users/${userId}`,{cache:"force-cache"})
+//   const topicResponce =await fetch(`${NEXT_PUBLIC_API_URL}/api/users/${userId}`,{cache:"force-cache"})
 //   return topicResponce.json();
 // }
 
