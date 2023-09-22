@@ -46,7 +46,7 @@ export async function GET(request: Request,response:Response) {
     try {
         console.log("+++++++++++try++++++++++++++")
 
-        // await connectMongoDB();
+        await connectMongoDB();
         console.log("+++++++++++mongo++++++++++++++")
 
         // const queryParams = new URL(request.url).searchParams;
