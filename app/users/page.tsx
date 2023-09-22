@@ -23,8 +23,9 @@ const getUsers = async () => {
   };
   
 const UsersPage = async() => {
-    const { users } = await getUsers();
-    console.log(users)
+    // const { users } =
+     await getUsers();
+    // console.log(users)
     return (
       <>
         <AddUserForm />
