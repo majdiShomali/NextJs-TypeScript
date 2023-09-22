@@ -56,8 +56,17 @@ export async function GET(request: Request,response:Response) {
         // const users = await User.find();
         console.log("+++++++++++find++++++++++++++")
 
-        return NextResponse.json({ users:{_id:"1111",userName:"aaaaaa"}}, { status: 200 });
-
+        // console.log(users)
+        return NextResponse.json({ users:[ {
+            _id:"650d47cc08a3bc5225c6380b",
+            userName: 'aaaa',
+            userEmail: 'maaa55@gmail.com',
+            userPassword: '$2b$05$SQwjVVbtXUAAZnWEpZ7WSuixCbt7QVatF60T8exW6mpjguDwvZ3se',
+            role: 'user',
+            createdAt: "2023-09-22T07:52:44.672Z",
+            updatedAt: "2023-09-22T07:52:44.672Z",
+            __v: 0
+          }]}, { status: 200 });
     } catch (error) {
         return NextResponse.json({ message: error }, { status: 500 });
     }
