@@ -30,7 +30,7 @@ interface UserCardProps {
   user: { _id: string; userName: string };
 }
 const EditUserForm: React.FC<UserCardProps> = ({ user }) => {
-  const ApiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -45,7 +45,7 @@ const EditUserForm: React.FC<UserCardProps> = ({ user }) => {
   const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
    e.preventDefault();
    try {
-     const res = await fetch(`http://localhost:3000/api/users/${user._id}`, {
+     const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/users/${user._id}`, {
        method: "PUT",
        headers: {
          "Content-type": "application/json",
