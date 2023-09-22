@@ -19,13 +19,16 @@ export async function GET() {
 
     const decodedToken = jwt.verify(value, secret) as JwtPayload;
     const response = {
-      user: decodedToken.role,
+      user: decodedToken,
+      // role:decodedToken.role
     };
-    if (decodedToken.role === "admin") {
       return new Response(JSON.stringify(response), { status: 200 });
-    } else {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    }
+
+    // if (decodedToken.role === "admin") {
+    //   return new Response(JSON.stringify(response), { status: 200 });
+    // } else {
+    //   return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    // }
   } catch (e) {
     return NextResponse.json({ message: "Something went wrong" },{ status: 400 });
   }

@@ -18,16 +18,17 @@ export default function DashboardLayout({
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const { push } = useRouter();
 
-  useEffect(() => {
-    (async () => {
-      const { user, error } = await getUser();
-      if (error) {
-        push("/");
-        return;
-      }
-      setIsSuccess(true);
-    })();
-  }, [push]);
+  // useEffect(() => {
+  //   (async () => {
+  //     const { user, error } = await getUser();
+
+  //     if (error) {
+  //       push("/");
+  //       return;
+  //     }
+  //     setIsSuccess(true);
+  //   })();
+  // }, [push]);
 
   if (!isSuccess) {
     return <p>Loading...</p>;
@@ -48,19 +49,19 @@ export default function DashboardLayout({
   );
 }
 
-async function getUser(): Promise<UserResponse> {
-  try {
-    const { data } = await axios.get("/api/auth/me");
-    return {
-      user: data,
-      error: null,
-    };
-  } catch (e) {
-    const error = e as AxiosError;
+// async function getUser(): Promise<UserResponse> {
+//   try {
+//     const { data } = await axios.get("/api/auth/me");
+//     return {
+//       user: data,
+//       error: null,
+//     };
+//   } catch (e) {
+//     const error = e as AxiosError;
 
-    return {
-      user: null,
-      error,
-    };
-  }
-}
+//     return {
+//       user: null,
+//       error,
+//     };
+//   }
+// }

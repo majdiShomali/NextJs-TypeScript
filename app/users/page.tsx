@@ -1,7 +1,6 @@
 import AddUserForm from "@/components/AddUserForm";
 import UserCard from "@/components/UserCard";
 const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
-console.log(`${NEXT_PUBLIC_API_URL}/api/users`)
 const getUsers = async () => {
     try {
       const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/users`, {

@@ -2,7 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Providers } from './GlobalRedux/provider';
-
+import { StickyNavbar } from '@/components/StickyNavbar';
+import UserProvider from '@/context/userContext/userContext';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -19,8 +20,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <div className='flex justify-center w-full'>Nav</div>
+          <UserProvider>
+
+          <StickyNavbar/>
           {children}
+          </UserProvider>
         </Providers>
         
         </body>

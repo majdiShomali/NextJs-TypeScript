@@ -1,42 +1,25 @@
-import type { NextRequest } from "next/server";
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 import { COOKIE_NAME } from "@/constants";
-import { NextResponse } from "next/server";
-import jwt,{ JwtPayload } from 'jsonwebtoken'; // If you're using ES modules
-import { verify } from "jsonwebtoken";
-import jwt_decode from "jwt-decode";
-import axios, { AxiosError } from "axios";
+
 const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
-
+interface cookieT {
+  name:string,
+  value:string
+}
 export async function middleware(request: NextRequest) {
-  // Access cookies directly from the request object
-//   const someCookieValue = request.cookies;
-//   const token = someCookieValue.get(COOKIE_NAME);
+  let cookie:any = request.cookies.get(COOKIE_NAME)
+  const data = await (await fetch(NEXT_PUBLIC_API_URL+`/api/auth/checkRole?token=${cookie.value}`)).json()
 
-
-
-
-  // async function getUser() {
-  //   try {
-  //     const res = await fetch(`${NEXT_PUBLIC_API_URL}/auth/me`, {
-  //       // cache:"force-cache",//SSG getStaticSideProps
-  //       cache: "no-store", //SSR getServerSideProps
-  //       // next: {
-  //       //   revalidate: 20, //ISR===== ssr with sec
-  //       // },
-  //     });
-  //     return res.json();
-  
-  //   } catch (e) {
-  //     const error = e as AxiosError;
-  
-    
-  //   }
-  // }
-
-//   const { user } = await getUser();
-// console.log(await getUser());
-
+  if (data.role!=="admin") {
+    return NextResponse.rewrite(new URL('/', request.url))
   }
+ 
+  if (data.role==="admin") {
+    return NextResponse.rewrite(new URL('/dashboard', request.url))
+  }
+
+}
 
 
 
