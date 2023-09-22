@@ -5,7 +5,9 @@ console.log(`${NEXT_PUBLIC_API_URL}/api/users`)
 const getUsers = async () => {
     try {
       const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/users`, {
-        cache: "no-store", 
+        next: {
+          revalidate: 20, //ISR===== ssr with sec
+        },
       });
   
       if (!res.ok) {

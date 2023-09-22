@@ -36,10 +36,11 @@ export default function Home() {
 useEffect(()=>{
   const getGet = async()=>{
     try {
-//       const response = await axios.get(`${NEXT_PUBLIC_API_URL}/api/users`);
-// console.log(response)
+
 const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/users`, {
-  cache: "no-store", 
+  next: {
+    revalidate: 20, //ISR===== ssr with sec
+  },
 });
 
 console.log(await res.json())
