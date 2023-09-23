@@ -42,7 +42,7 @@ try {
   );
 
   const seralized = serialize(COOKIE_NAME, token, {
-    httpOnly: true,
+    httpOnly: false,
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
     maxAge: MAX_AGE,

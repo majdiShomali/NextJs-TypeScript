@@ -10,15 +10,13 @@ import {
 } from "@material-tailwind/react";
 import Link from "next/link";
 
-
 import { useContext } from "react";
 import { UserContext } from "@/context/userContext/userContext";
 import { UserType } from "@/types/userData";
 import LogOutButton from "./LogOutButton";
 export function StickyNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
-  const { user }:any = useContext<UserType | undefined>(UserContext);
-  console.log(useContext<UserType | undefined>(UserContext));
+  const { user }: any = useContext<UserType | undefined>(UserContext);
 
   React.useEffect(() => {
     window.addEventListener(
@@ -35,7 +33,12 @@ export function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link onClick={()=>setOpenNav(false)} aria-label={`Topics`} href="/users" className="flex items-center">
+        <Link
+          onClick={() => setOpenNav(false)}
+          aria-label={`Topics`}
+          href="/users"
+          className="flex items-center"
+        >
           Users
         </Link>
       </Typography>
@@ -45,8 +48,13 @@ export function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link onClick={()=>setOpenNav(false)} aria-label={`all-Topics`} href="/dashboard" className="flex items-center">
-        dashboard
+        <Link
+          onClick={() => setOpenNav(false)}
+          aria-label={`all-Topics`}
+          href="/dashboard"
+          className="flex items-center"
+        >
+          dashboard
         </Link>
       </Typography>
       <Typography
@@ -55,7 +63,12 @@ export function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link onClick={()=>setOpenNav(false)} aria-label={`Blocks`} href="#" className="flex items-center">
+        <Link
+          onClick={() => setOpenNav(false)}
+          aria-label={`Blocks`}
+          href="#"
+          className="flex items-center"
+        >
           Blocks
         </Link>
       </Typography>
@@ -65,7 +78,12 @@ export function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link onClick={()=>setOpenNav(false)} aria-label={`Docs`} href="#" className="flex items-center">
+        <Link
+          onClick={() => setOpenNav(false)}
+          aria-label={`Docs`}
+          href="#"
+          className="flex items-center"
+        >
           Docs
         </Link>
       </Typography>
@@ -75,7 +93,7 @@ export function StickyNavbar() {
   return (
     <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
       <div className="flex items-center justify-between text-blue-gray-900">
-        <Link onClick={()=>setOpenNav(false)} aria-label={`Next-JS`} href="/">
+        <Link onClick={() => setOpenNav(false)} aria-label={`Next-JS`} href="/">
           <Typography className="mr-4 cursor-pointer py-1.5 font-medium">
             Next JS
           </Typography>
@@ -83,28 +101,28 @@ export function StickyNavbar() {
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
 
-
-          {user? 
-<>
-
-<LogOutButton/>
-</>
-: 
-
-<>
-
-<Link onClick={()=>setOpenNav(false)} aria-label={`Docs`} href="/registration/login" className="flex items-center">
-          <Button
-            variant="gradient"
-            size="sm"
-            className="hidden lg:inline-block"
-          >
-            <span>Log in</span>
-          </Button>
-          </Link>
-
-</>
-                 }       
+          {user ? (
+            <>
+              <LogOutButton />
+            </>
+          ) : (
+            <>
+              <Link
+                onClick={() => setOpenNav(false)}
+                aria-label={`Docs`}
+                href="/registration/login"
+                className="flex items-center"
+              >
+                <Button
+                  variant="gradient"
+                  size="sm"
+                  className="hidden lg:inline-block"
+                >
+                  <span>Log in</span>
+                </Button>
+              </Link>
+            </>
+          )}
 
           <IconButton
             variant="text"
@@ -149,28 +167,29 @@ export function StickyNavbar() {
       <Collapse open={openNav}>
         {navList}
 
-{user? 
-<>
-
-<LogOutButton/>
-</>
-
-
-:
-<>
-
-<Link aria-label={`Docs`} href="/registration/login" className="flex items-center">
-        <Button onClick={()=>setOpenNav(false)} variant="gradient" size="sm" fullWidth className="mb-2">
-          <span>Log In</span>
-        </Button>
-        </Link>
-</>
-
-
-}
-
-
-
+        {user ? (
+          <>
+            <LogOutButton />
+          </>
+        ) : (
+          <>
+            <Link
+              aria-label={`Docs`}
+              href="/registration/login"
+              className="flex items-center"
+            >
+              <Button
+                onClick={() => setOpenNav(false)}
+                variant="gradient"
+                size="sm"
+                fullWidth
+                className="mb-2"
+              >
+                <span>Log In</span>
+              </Button>
+            </Link>
+          </>
+        )}
       </Collapse>
     </Navbar>
   );

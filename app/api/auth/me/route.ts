@@ -20,7 +20,7 @@ export async function GET() {
     const decodedToken = jwt.verify(value, secret) as JwtPayload;
     const response = {
       user: decodedToken,
-      // role:decodedToken.role
+      token:token
     };
       return new Response(JSON.stringify(response), { status: 200 });
 

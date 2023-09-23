@@ -1,12 +1,18 @@
 import AddUserForm from "@/components/AddUserForm";
 import UserCard from "@/components/UserCard";
 const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
-const getUsers = async () => {
+import { cookies } from 'next/headers'
+import { COOKIE_NAME } from "@/constants";
+
+const getUsers = async (token:string | undefined) => {
     try {
       const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/users`, {
-        next: {
-          revalidate: 20, //ISR===== ssr with sec
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
+        // next: {
+        //   revalidate: 20, //ISR===== ssr with sec
+        // },
       });
   
       if (!res.ok) {
@@ -20,13 +26,14 @@ const getUsers = async () => {
   };
   
 const UsersPage = async() => {
-    const { users } = await getUsers();
-    console.log(users)
+  const cookieStore = cookies()
+  const token = cookieStore.get(COOKIE_NAME)
+    const data= await getUsers(token?.value) || [];
     return (
       <>
         <AddUserForm />
         <div className="flex flex-wrap justify-center gap-5 my-5">
-          <UserCard users={users} />
+          <UserCard users={data?.users} />
         </div>
       </>
     );

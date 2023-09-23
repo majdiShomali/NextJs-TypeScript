@@ -1,6 +1,6 @@
 
 
-import LogOutButton from "@/components/LogOutButton";
+// import LogOutButton from "@/components/LogOutButton";
 export default function DashboardPage() {
   // This page is protected
 
@@ -8,7 +8,7 @@ export default function DashboardPage() {
     <div>
       <h1>Super Secret Dashboard</h1>
 
-      <LogOutButton/>
+      {/* <LogOutButton/> */}
     </div>
   );
 }
