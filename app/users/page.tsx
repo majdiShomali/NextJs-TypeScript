@@ -1,9 +1,7 @@
-import AddUserForm from "@/components/AddUserForm";
 import UserCard from "@/components/UserCard";
 const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 import { cookies } from 'next/headers'
 import { COOKIE_NAME } from "@/constants";
-
 const getUsers = async (token:string | undefined) => {
     try {
       const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/users`, {
@@ -31,10 +29,10 @@ const UsersPage = async() => {
     const data= await getUsers(token?.value) || [];
     return (
       <>
-        <AddUserForm />
         <div className="flex flex-wrap justify-center gap-5 my-5">
           <UserCard users={data?.users} />
         </div>
+
       </>
     );
 }
