@@ -7,7 +7,7 @@ const ContextTest = () => {
     const { user }:any = useContext<UserType | undefined>(UserContext);
 
   return (
-    <div> welcome:-   {user?.userEmail} </div>
+    <div> welcome:-   {user?.user?.userEmail} </div>
   )
 }
 

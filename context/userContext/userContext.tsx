@@ -23,7 +23,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   async function getUser(): Promise<UserResponse> {
     try {
       const { data } = await axios.get("/api/auth/me");
-      setUser(data.user)
+      setUser(data)
       return {
         user: data,
         error: null,
@@ -46,7 +46,6 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       }
     })();
   }, []);
-
   return (
     <UserContext.Provider
       value={{

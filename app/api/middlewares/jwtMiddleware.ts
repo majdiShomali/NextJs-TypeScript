@@ -17,7 +17,7 @@ function jwtMiddleware(token:string,role:string) {
         const decodedToken = jwt.verify(token, secret) as JwtPayload;
         if(decodedToken.role ===role){
           return decodedToken
-        }{
+        }else{
           throw new Error("Unauthorized");
         }
       } catch (error) {

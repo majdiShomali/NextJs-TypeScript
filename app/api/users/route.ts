@@ -6,8 +6,6 @@ import { jwtMiddleware } from "@/app/api/middlewares/jwtMiddleware";
 
 export async function DELETE(request:Request,response:Response) {
     const token:string |null  =request.headers.get("authorization")?.replace('Bearer ', '') || null;
-
-   console.log(token);
     try {
 
         if(token){
@@ -66,7 +64,6 @@ const token:string |null  =request.headers.get("authorization")?.replace('Bearer
         }else{
          throw new Error("Unauthorized");
         }
-        // const decodedToken = jwtMiddleware(request, response);
         await connectMongoDB();
         // const queryParams = new URL(request.url).searchParams;
         // const numParam = queryParams.get('num'); 
