@@ -4,9 +4,8 @@ import EditUserForm from "./EditUserForm";
 import Icon from "@mdi/react";
 import { mdiDelete } from "@mdi/js";
 import Link from "next/link";
-import { useContext } from "react";
-import { UserContext } from "@/context/userContext/userContext";
-import { UserType } from "@/types/userData";
+
+import { useUserContext } from "@/context/userContext/userContext";
 
 const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -14,7 +13,7 @@ interface UserCardProps {
   users: Array<{ _id: string; userName: string; token: string }>;
 }
 const UserCard: React.FC<UserCardProps> = ({ users }) => {
-  const { user }: any = useContext<UserType>(UserContext);
+  const {user} =useUserContext()
   const handleDelete = async (
     // e: React.MouseEvent<HTMLDivElement>,
     userId: string
