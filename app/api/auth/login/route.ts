@@ -16,7 +16,6 @@ try {
   await connectMongoDB();
 
   const user = await User.findOne({userEmail:userEmail});
-  console.log(user);
   if(!user){
     return NextResponse.json({ message: "user not found" }, { status: 404 });
   }
@@ -51,7 +50,8 @@ try {
 
   const response = {
     message: "Authenticated!",
-    role:user.role
+    role:user.role,
+    userId:user._id
   };
 
   return new Response(JSON.stringify(response), {

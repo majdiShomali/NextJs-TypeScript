@@ -1,14 +1,16 @@
+interface DashboardPageProps {
+  searchParams: {
+    userId: string;
+  };
+}
 
-
-// import LogOutButton from "@/components/LogOutButton";
-export default function DashboardPage() {
-  // This page is protected
+export default function DashboardPage({ searchParams }: DashboardPageProps) {
+  const userId =searchParams.userId
 
   return (
     <div>
-      <h1>Super Secret Dashboard</h1>
+      <h1>Super Secret Dashboard {userId}</h1>
 
-      {/* <LogOutButton/> */}
     </div>
   );
 }

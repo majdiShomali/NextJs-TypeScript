@@ -6,7 +6,6 @@ const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function middleware(request: NextRequest) {
   let cookie:CookieType = request.cookies.get(COOKIE_NAME)
-
   if(cookie){
     
     const {role} = await (await fetch(NEXT_PUBLIC_API_URL+`/api/auth/checkRole?token=${cookie.value}`)).json()

@@ -1,18 +1,20 @@
 "use client"
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import axios, { AxiosError } from "axios";
 import { UserType } from "@/types/userData";
 
+type userContextType = {
+  user:UserType,
+  setUser:React.Dispatch<React.SetStateAction<UserType>>
+}|undefined
 
-// Create a context for the user
-export const UserContext = createContext<any | undefined>(undefined);
+export const UserContext = createContext<userContextType>(undefined);
 
 interface UserProviderProps {
   children: React.ReactNode;
 }
 
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
-  // Define the user state
   const [user, setUser] = useState<UserType>();
 
 
@@ -23,7 +25,6 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   async function getUser(): Promise<UserResponse> {
     try {
       const { data } = await axios.get("/api/auth/me");
-      console.log(data);
       setUser(data)
       return {
         user: data,
@@ -60,3 +61,14 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 };
 
 export default UserProvider;
+
+
+export function useUserContext(){
+  const context =useContext(UserContext);
+  if(!context){
+    throw new Error(
+      "un auth"
+    )
+  }
+  return context
+}

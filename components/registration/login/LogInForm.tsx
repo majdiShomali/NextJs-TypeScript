@@ -24,16 +24,16 @@ const LogInForm = () => {
 
     try {
       const { data } = await axios.post("/api/auth/login", payload);
-
+     
       alert(JSON.stringify(data));
 
       // redirect the user to /dashboard
       if (data.role === "admin") {
-        // push("/dashboard");
-        window.location.href = `${NEXT_PUBLIC_API_URL}/dashboard`;
+        // push(`${NEXT_PUBLIC_API_URL}/dashboard?userId=${data.userId}`);
+        window.location.href = `${NEXT_PUBLIC_API_URL}/dashboard?userId=${data.userId}`;
       } else {
-        push("/");
-        window.location.href = `${NEXT_PUBLIC_API_URL}/`;
+        // push(`${NEXT_PUBLIC_API_URL}?userId=${data.userId}/`);
+        window.location.href = `${NEXT_PUBLIC_API_URL}?userId=${data.userId}/`;
       }
     } catch (e) {
       const error = e as AxiosError;

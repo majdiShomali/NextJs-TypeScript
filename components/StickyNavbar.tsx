@@ -6,18 +6,14 @@ import {
   Typography,
   Button,
   IconButton,
-  Card,
 } from "@material-tailwind/react";
 import Link from "next/link";
-
-import { useContext } from "react";
-import { UserContext } from "@/context/userContext/userContext";
-import { UserType } from "@/types/userData";
+import { useUserContext } from "@/context/userContext/userContext";
 import LogOutButton from "./registration/LogOutButton";
+
 export function StickyNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
-  const { user }: any = useContext<UserType | undefined>(UserContext);
-
+  const {user} =useUserContext()
   React.useEffect(() => {
     window.addEventListener(
       "resize",

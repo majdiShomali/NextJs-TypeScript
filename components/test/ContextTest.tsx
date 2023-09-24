@@ -1,10 +1,8 @@
 "use client";
-import { useContext } from "react";
-import { UserContext } from "@/context/userContext/userContext";
-import { UserType } from "@/types/userData";
+import { useUserContext } from "@/context/userContext/userContext";
 
 const ContextTest = () => {
-  const { user }: any = useContext<UserType | undefined>(UserContext);
+  const {user} =useUserContext()
   return (
     <>
       {user ? (
