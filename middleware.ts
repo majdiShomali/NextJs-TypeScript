@@ -13,11 +13,6 @@ export async function middleware(request: NextRequest) {
     if (role!=="admin") {
       return NextResponse.rewrite(new URL('/', request.url))
     }
-   
-    if (role==="admin") {
-      return NextResponse.rewrite(new URL('/dashboard', request.url))
-    }
-
 
   }else{
     return NextResponse.rewrite(new URL('/', request.url))

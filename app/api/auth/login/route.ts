@@ -12,7 +12,6 @@ export async function POST(request: Request) {
   const body = await request.json();
 
   const { userEmail, userPassword } = body;
-       console.log( userEmail, userPassword)
 try {
   await connectMongoDB();
 
@@ -32,8 +31,9 @@ try {
 
   const token = sign(
     {
+      userId:user._id,
       userEmail,
-      role:user.role
+      role:user.role,
     },
     secret,
     {

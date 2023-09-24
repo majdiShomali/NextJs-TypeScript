@@ -1,4 +1,4 @@
-import ContextTest from "@/components/ContextTest";
+import ContextTest from "@/components/test/ContextTest";
 export default function Home() {
 
 

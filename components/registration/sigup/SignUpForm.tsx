@@ -67,7 +67,7 @@ const SignUpForm = () => {
               <Input
                 size="lg"
                 type="password"
-                label="password"
+                label="Password"
                 value={userPassword}
                 onChange={(e) => setPassword(e.target.value)}
                 crossOrigin="anonymous"
