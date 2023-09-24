@@ -27,7 +27,8 @@ const SignUpForm = () => {
         });
   
         if (res.ok) {
-        console.log(await res.json());
+        const user =await res.json();
+        window.location.href = `${NEXT_PUBLIC_API_URL}?userId=${user.userId}/`;
         } else {
           const {message} =await res.json()
           setErrorMessage(message);

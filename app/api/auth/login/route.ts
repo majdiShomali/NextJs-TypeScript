@@ -25,7 +25,6 @@ try {
   }
 
 
-  //   // Always check this
   const secret = process.env.JWT_SECRET || "";
 
   const token = sign(
