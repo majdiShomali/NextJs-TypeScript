@@ -4,6 +4,7 @@ import React from "react";
 import { useState } from "react";
 import { Card, Input, Button } from "@material-tailwind/react";
 import Link from "next/link";
+import GoogleButton from "../GoogleButton";
 
 
 const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -79,6 +80,8 @@ const SignUpForm = () => {
             <Button type="submit" className="mt-6" fullWidth>
               Sign Up
             </Button>
+            <p>---------------or---------------</p>
+         <GoogleButton/>
           </form>
           <Link
               aria-label={`Docs`}

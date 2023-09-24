@@ -4,7 +4,7 @@ import React from "react";
 import { useState } from "react";
 
 import { Card, Input, Button } from "@material-tailwind/react";
-
+import GoogleButton from "../GoogleButton";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -24,7 +24,7 @@ const LogInForm = () => {
 
     try {
       const { data } = await axios.post("/api/auth/login", payload);
-     
+
       alert(JSON.stringify(data));
 
       // redirect the user to /dashboard
@@ -42,12 +42,14 @@ const LogInForm = () => {
     }
   };
 
+
+
   return (
     <section
       id="create-category"
       className=" w-full   bg-gray-100 flex justify-center  "
     >
-      <Card className="my-10 ">
+      <Card className="mt-10 ">
         <form onSubmit={handleSubmit} className=" p-10 ">
           <div className="mb-4 flex flex-col gap-6">
             <Input
@@ -73,12 +75,17 @@ const LogInForm = () => {
           <Button type="submit" className="mt-6" fullWidth>
             LogIn
           </Button>
+          <p>---------------or---------------</p>
+         <GoogleButton/>
         </form>
-             <Link
-              aria-label={`Docs`}
-              href="/registration/signup"
-              className="flex items-center text-blue-500"
-            >SignUp</Link>
+
+        <Link
+          aria-label={`Docs`}
+          href="/registration/signup"
+          className="flex items-center text-blue-500"
+        >
+          SignUp
+        </Link>
       </Card>
     </section>
   );
