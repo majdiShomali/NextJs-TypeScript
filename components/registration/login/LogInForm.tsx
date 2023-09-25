@@ -49,7 +49,7 @@ const LogInForm = () => {
       id="create-category"
       className=" w-full   bg-gray-100 flex justify-center  "
     >
-      <Card className="mt-10 ">
+      <Card className="mt-10 w-96">
         <form onSubmit={handleSubmit} className=" p-10 ">
           <div className="mb-4 flex flex-col gap-6">
             <Input
@@ -75,17 +75,28 @@ const LogInForm = () => {
           <Button type="submit" className="mt-6" fullWidth>
             LogIn
           </Button>
-          <p>---------------or---------------</p>
+          <div className="flex items-center justify-center my-2">
+            <p>---OR---</p>
+          </div>
          <GoogleButton/>
         </form>
+
+        <div className="flex justify-center items-center">
+
+
 
         <Link
           aria-label={`Docs`}
           href="/registration/signup"
           className="flex items-center text-blue-500"
         >
-          SignUp
+          Don't have an account?
         </Link>
+
+
+
+        </div>
+
       </Card>
     </section>
   );
