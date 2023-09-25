@@ -75,28 +75,22 @@ const LogInForm = () => {
           <Button type="submit" className="mt-6" fullWidth>
             LogIn
           </Button>
-          <div className="flex items-center justify-center my-2">
+          <div className="flex items-center justify-center">
             <p>---OR---</p>
           </div>
          <GoogleButton/>
         </form>
-
+        
         <div className="flex justify-center items-center">
-
-
 
         <Link
           aria-label={`Docs`}
           href="/registration/signup"
           className="flex items-center text-blue-500"
         >
-          Don't have an account?
+          SignUp
         </Link>
-
-
-
         </div>
-
       </Card>
     </section>
   );
