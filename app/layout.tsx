@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Providers } from "./GlobalRedux/provider";
+import { Providers } from "@/GlobalRedux/provider";
 import { StickyNavbar } from "@/components/StickyNavbar";
 import UserProvider from "@/context/userContext/userContext";
 import GoogleProvider from "@/components/registration/GoogleProvider";

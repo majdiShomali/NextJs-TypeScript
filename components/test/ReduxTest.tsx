@@ -1,7 +1,7 @@
 "use client"
-import type { RootState } from '../../app/GlobalRedux/store';
+import type { RootState } from '@/GlobalRedux/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, incrementByAmount } from '../../app/GlobalRedux/Features/counter/counterSlice';
+import { increment, decrement, incrementByAmount } from '@/GlobalRedux/Features/counter/counterSlice';
 
 const ReduxTest = () => {
     const count = useSelector((state: RootState) => state.counter.value);
