@@ -88,7 +88,7 @@ const LogInForm = () => {
           href="/registration/signup"
           className="flex items-center text-blue-500"
         >
-          SignUp
+          Do not have an account?
         </Link>
         </div>
       </Card>
