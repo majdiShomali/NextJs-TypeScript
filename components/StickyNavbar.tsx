@@ -99,7 +99,9 @@ export function StickyNavbar() {
 
           {user ? (
             <>
+            <div className="hidden lg:inline-block">
               <LogOutButton />
+              </div>
             </>
           ) : (
             <>
@@ -164,9 +166,11 @@ export function StickyNavbar() {
         {navList}
 
         {user ? (
-          <>
-            <LogOutButton />
-          </>
+       <>
+       <div onClick={() => setOpenNav(false)}>
+       <LogOutButton />
+       </div>
+     </>
         ) : (
           <>
             <Link

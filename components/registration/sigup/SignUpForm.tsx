@@ -133,10 +133,10 @@ const SignUpForm = () => {
           <p className="text-red-500 text-sm text-wrap">{errorMessage}</p>
 
           
-          <Button type="submit" className="mt-6" fullWidth>
+          <Button type="submit" className="mt-6 h-10" fullWidth>
             Sign Up
           </Button>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center my-3">
             <p>---OR---</p>
           </div>
           <GoogleButton />

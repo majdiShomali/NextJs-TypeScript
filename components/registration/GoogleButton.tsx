@@ -62,7 +62,7 @@ const GoogleButton = () => {
     }
   };
   return (
-    <Button className="w-full flex  items-center justify-center" onClick={() => login()}>
+    <Button className="w-full flex h-10  items-center justify-center" onClick={() => login()}>
       <svg
         aria-hidden="true"
         focusable="false"

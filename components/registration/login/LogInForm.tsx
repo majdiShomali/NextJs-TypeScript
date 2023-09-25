@@ -72,10 +72,10 @@ const LogInForm = () => {
             />
           </div>
 
-          <Button type="submit" className="mt-6" fullWidth>
+          <Button type="submit" className="mt-6 h-10" fullWidth>
             LogIn
           </Button>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center my-3">
             <p>---OR---</p>
           </div>
          <GoogleButton/>
