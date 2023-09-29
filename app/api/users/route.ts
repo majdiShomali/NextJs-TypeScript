@@ -98,7 +98,6 @@ export async function GET(request: Request, response: Response) {
   // const token = request.headers.authorization?.replace('Bearer ', '');
   const token: string | null =
     request.headers.get("authorization")?.replace("Bearer ", "") || null;
-
   try {
     if (token) {
       jwtMiddleware(token, "admin");

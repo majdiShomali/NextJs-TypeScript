@@ -1,46 +1,59 @@
-"use client"
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+"use client";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IUserType } from "@/models/user";
 const NEXT_PUBLIC_API_URL= process.env.NEXT_PUBLIC_API_URL
 
-export const fetchUser = createAsyncThunk(
-  "User/fetchUser",
-  async () => {
-    const response = await axios.get(`${NEXT_PUBLIC_API_URL}/api/users/65106ce2b43620771c943455`);
-    return response.data.user;
-  }
-);
+type dataType = {
+  users: IUserType[];
+};
 
-interface UserState {
-    loading: boolean;
-    data: any; 
-    error: string | null; 
+interface initialStateType {
+  loading: boolean;
+  data: dataType;
+  error: string | null;
+}
+const initialState = {
+  loading: true,
+  data: { users: [] },
+  error: null,
+} as initialStateType;
+
+export const fetchUsers = createAsyncThunk("users/fetch", async (token:string) => {
+  try {
+    const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/users`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = response.json();
+    return data;
+  } catch (error) {
+    // return thunkAPI.rejectWithValue("Failed to fetch users data");
   }
-const fetchUserSlice = createSlice({
-  name: "User",
-  initialState: {
-    loading: true,
-    data: {},
-    error: null as null,
-  } as UserState,
+});
+
+export const UsersSlice = createSlice({
+  name: "users",
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUser.pending, (state) => {
+
+      .addCase(fetchUsers.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchUser.fulfilled, (state, action) => {
+      .addCase(fetchUsers.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
       })
-      .addCase(fetchUser.rejected, (state, action) => {
+      .addCase(fetchUsers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "error";
       })
 
   },
 });
-export default fetchUserSlice.reducer;
 
-
+export default UsersSlice.reducer;

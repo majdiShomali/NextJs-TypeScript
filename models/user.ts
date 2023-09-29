@@ -1,4 +1,15 @@
 import mongoose, { Schema } from "mongoose";
+
+export interface IUserType {
+  _id?: string;
+  userName: string;
+  userEmail:string;
+  userPassword:string;
+  role?:string;
+  createdAt?:string;
+  updatedAt?:string;
+}
+
 const userSchema = new Schema(
   {
     userName: {
